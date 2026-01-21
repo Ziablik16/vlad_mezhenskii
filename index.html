@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Владислав | Профессиональная сборка мебели</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0a0a0a; 
+            --card: #161616; 
+            --text: #ffffff; 
+            --dim: #a1a1aa;
+            --accent: #6d28d9; 
+            --border: #27272a;
+            --grad: linear-gradient(135deg, #6d28d9 0%, #2563eb 100%);
+            --yellow: #fbbf24;
+            --nav-bg: rgba(10, 10, 10, 0.7);
+            --card-service: #1e293b;
+            --photo-bg: #333;
+        }
+        [data-theme="light"] {
+            --bg: #f4f4f5; --card: #ffffff; --text: #09090b; --dim: #71717a;
+            --accent: #4f46e5; --border: #e4e4e7;
+            --nav-bg: rgba(244, 244, 245, 0.8);
+            --card-service: #e2e8f0;
+            --photo-bg: #d4d4d8;
+        }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            margin: 0; font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg); color: var(--text); transition: 0.3s;
+        }
+        
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; position: sticky; top: 0;
+            background: var(--nav-bg); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border); z-index: 1000;
+        }
+        .logo { font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; color: var(--text); }
+        .logo-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { text-decoration: none; color: var(--dim); font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--text); }
+        
+        .controls { display: flex; gap: 10px; }
+        .c-btn { 
+            cursor: pointer; background: var(--card); border: 1px solid var(--border); 
+            color: var(--text); padding: 8px 12px; border-radius: 10px; font-weight: 600;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 60px 0 20px; }
+        
+        h2 { font-size: 2rem; color: var(--yellow); border-left: 4px solid var(--yellow); padding-left: 15px; margin-bottom: 30px; }
+        h3 { font-size: 1.5rem; margin-top: 40px; margin-bottom: 20px; color: var(--text); }
+        .accent { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .service-card { 
+            background: var(--card-service); padding: 25px; border-radius: 16px; border: 1px solid var(--border); 
+            display: flex; flex-direction: column; gap: 15px; transition: 0.3s;
+        }
+        .service-card i { color: var(--yellow); font-size: 1.8rem; }
+        .price-badge { background: var(--yellow); color: #000; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
+
+        .card-exp { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--border); margin-bottom: 20px; }
+
+        .guarantee-box { background: var(--card); border: 1px dashed var(--yellow); padding: 25px; border-radius: 16px; margin-top: 20px; }
+        .guarantee-list { list-style: none; padding: 0; }
+        .guarantee-list li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .guarantee-list li::before { content: "✓"; position: absolute; left: 0; color: var(--yellow); font-weight: bold; }
+
+        .cta-section {
+            background-color: var(--yellow);
+            color: #0f172a;
+            padding: 60px 20px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .cta-section h2 { border: none; color: #0f172a; padding: 0; margin-bottom: 15px; font-size: 2.5rem; justify-content: center; display: flex; }
+        .cta-btn {
+            display: inline-block;
+            background: #0f172a;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+        .cta-btn:hover { transform: scale(1.05); }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .photo-gallery img {
+            width: 100%; height: 150px; object-fit: cover; border-radius: 12px;
+            border: 1px solid var(--border); transition: transform 0.2s ease;
+        }
+        .photo-gallery img:hover { transform: scale(1.03); border-color: var(--accent); }
+        .photo-placeholder {
+            width: 100%; height: 150px; background-color: var(--photo-bg);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: var(--dim); font-size: 0.9rem; border: 1px solid var(--border);
+        }
+
+        .hidden { display: none; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body data-theme="dark">
+
+<nav>
+    <div class="logo"><div class="logo-dot"></div> Владислав</div>
+    <div class="nav-links">
+        <a href="#about">Обо мне</a>
+        <a href="#services">Услуги</a>
+        <a href="#experience">Опыт</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#guarantee">Гарантия</a>
+    </div>
+    <div class="controls">
+        <button class="c-btn" onclick="toggleLang()" id="lBtn">EN</button>
+        <button class="c-btn" onclick="toggleTheme()"><i class="fas fa-moon" id="tIcon"></i></button>
+    </div>
+</nav>
+
+<div class="container">
+    <div id="ru">
+        <section id="about" class="hero">
+            <h2>О мастере</h2>
+            <div class="card-exp" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+                <div style="flex: 0 0 200px; margin: 0 auto;">
+                    <img src="imgaes for site/IMG_9165-2.jpg" alt="Владислав" style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(109, 40, 217, 0.3);">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 0;">
+                        Профессиональный сборщик корпусной мебели с инженерным подходом и опытом работы более 5 лет. Специализируюсь на премиальных брендах и сложных конструкциях. За время карьеры собрал тысячи единиц мебели, работая в режиме высокой интенсивности (до 10 кроватей в день без потери качества).
+                    </p>
+                    <p style="font-size: 1.1rem;">Мой подход — это сочетание скорости, аккуратности и безупречного сервиса в общении с каждым клиентом.</p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a href="tel:+79017803794" class="cta-btn" style="background:var(--grad); color:white; font-size:1.1rem; padding:15px 30px; border-radius:12px;">Позвонить Даниэлю</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Услуги</h2>
+            <div class="grid">
+                <div class="service-card">
+                    <i class="fas fa-bed"></i>
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <strong style="font-size:1.2rem;">Кровати</strong>
+                            <span class="price-badge">от 3000₽</span>
+                        </div>
+                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Любые механизмы: подъемные, трансформеры, ортопедические основания.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-door-open"></i>
+                    <div>
+                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Шкафы-купе</strong>
+                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Сборка створчатых шкафов и систем хранения любой конфигурации (в т.ч. PAX).</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Электроника</strong>
+                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Монтаж встроенной подсветки и подключение механизмов с электроприводом.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Опыт и репутация</h2>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">1. Флагманский салон Askona (ТЦ «Авиапарк», 2022)</h3>
+                <p>В одиночку осуществил полную сборку всего мебельного фонда флагманского салона накануне открытия. Объект сдан точно в срок с безупречным качеством монтажа.</p>
+            </div>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">2. Масштабные проекты в ТЦ «Щелковский»</h3>
+                <p>Комплексное оснащение выставочных залов ведущих мебельных брендов:</p>
+                <ul style="color:var(--dim); padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><b>2022г:</b> Сборка двухэтажного салона <b>Askona</b> (полный цикл работ).</li>
+                    <li><b>2021г:</b> Сборка салона <b>Орматек</b> (подготовка к открытию).</li>
+                </ul>
+            </div>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">3. Работа с VIP-клиентами</h3>
+                <p>Многолетний опыт работы в премиум-сегменте и деликатный подход. Среди клиентов, доверивших мне сборку своего интерьера: <span class="accent" style="font-weight:bold">Филипп Киркоров</span> и <span class="accent" style="font-weight:bold">Эвелина Блёданс</span>.</p>
+            </div>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">4. Работа с брендами-лидерами</h3>
+                <p>Экспертное знание технологических карт и нюансов фурнитуры компаний <b>Askona, Орматек, Райтон и IKEA</b>. Опыт стабильной работы: минимум 20 дней в месяц на протяжении 5 лет.</p>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>Портфолио</h2>
+            <h3>Салон Askona (ТЦ «Авиапарк»)</h3>
+            <div class="photo-gallery">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (1).jpg" alt="Сборка в ТЦ Авиапарк 1/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (2).jpg" alt="Сборка в ТЦ Авиапарк 2/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (3).jpg" alt="Сборка в ТЦ Авиапарк 3/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (4).jpg" alt="Сборка в ТЦ Авиапарк 4/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (5).jpg" alt="Сборка в ТЦ Авиапарк 5/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (6).jpg" alt="Сборка в ТЦ Авиапарк 6/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (7).jpg" alt="Сборка в ТЦ Авиапарк 7/8">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (8).jpg" alt="Сборка в ТЦ Авиапарк 8/8">
+                <img src="imgaes for site/Аскона 2022/2022-08-17 20-38-30.jpg" alt="Сборка в полного комплекта Space Solutions в ТЦ Авиапарк">
+            </div>
+            <h3>Салоны в ТЦ «Щелковский»</h3>
+            <div class="photo-gallery">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (1).jpg" alt="Сборка шкафа из массива">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (2).jpg" alt="Сборка кровати из металлического каркаса">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (3).jpg" alt="Сборка двухстворчатого шкафа">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (4).jpg" alt="Сборка шкафа из массива 2">
+            </div>
+            <h3>Прочие работы</h3>
+            <div class="photo-gallery">
+                <img src="imgaes for site/Space_Solutions.jpg" alt="Сборка откидной кровати Space Solutions 1/3">
+                <img src="imgaes for site/Space_Solutions2.jpg" alt="Сборка откидной кровати Space Solutions 2/3">
+                <img src="imgaes for site/Space_Solutions_Rumer.jpg" alt="Сборка откидной кровати Space Solutions 3/3">
+                <img src="imgaes for site/Дыван.jpg" alt="Сборка дивана с атаманкой">
+                <img src="imgaes for site/Угловой.jpg" alt="Сборка углового шкафа Space Solutions 1/2">
+                <img src="imgaes for site/Угловой (2).jpg" alt="Сборка углового шкафа Space Solutions 2/2">
+            </div>
+        </section>
+
+        <section id="guarantee">
+            <h2>Гарантийные обязательства</h2>
+            <div class="card-exp">
+                <p>Я уверен в качестве своей работы и предоставляю гарантию <b>12 месяцев</b>.</p>
+                <div class="guarantee-box">
+                    <ul class="guarantee-list">
+                        <li>Нарушение геометрии из-за неверной затяжки крепежа.</li>
+                        <li>Некорректная работа фурнитуры (петель, доводчиков) при соблюдении норм нагрузки.</li>
+                        <li>Появление скрипов, связанных с ошибками при монтаже.</li>
+                        <li>Исправность всех подъемных механизмов и электроники.</li>
+                    </ul>
+                </div>
+                <p style="margin-top:20px; font-size:0.85rem; color:var(--dim);">
+                    * Гарантия не распространяется на естественный износ, дефекты материалов производителя, поломки из-за перегрузки или самостоятельного перемещения мебели клиентом после сборки.
+                </p>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Сделать заказ</h2>
+            <p>Работаю по Москве и МО. Связь с 12:00 до 23:00</p>
+            <a href="tel:+79017803794" class="cta-btn">Позвонить мастеру</a>
+        </div>
+    </div>
+
+    <div id="en" class="hidden">
+        <section id="about-en" class="hero">
+            <h2>About the Master</h2>
+            <div class="card-exp" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
+                <div style="flex: 0 0 200px; margin: 0 auto;">
+                    <img src="imgaes for site/IMG_9165-2.jpg" alt="Vladislav" style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(109, 40, 217, 0.3);">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 0;">
+                        Professional furniture assembler with an engineering approach and 5+ years of experience. I specialize in premium brands and complex structures. Over my career, I've assembled thousands of units, working in high-intensity mode (up to 10 beds per day without quality loss).
+                    </p>
+                    <p style="font-size: 1.1rem;">My approach is a combination of speed, accuracy, and impeccable service in communicating with every client.</p>
+                </div>
+            </div>
+            <div class="btn-group">
+                <a href="tel:+79017803794" class="cta-btn" style="background:var(--grad); color:white; font-size:1.1rem; padding:15px 30px; border-radius:12px;">Call Vladislav</a>
+            </div>
+        </section>
+
+        <section id="services-en">
+            <h2>Services</h2>
+            <div class="grid">
+                <div class="service-card">
+                    <i class="fas fa-bed"></i>
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                            <strong style="font-size:1.2rem;">Beds</strong>
+                            <span class="price-badge">from 3000₽</span>
+                        </div>
+                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Any mechanisms: lifting, transformers, orthopedic bases.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-door-open"></i>
+                    <div>
+                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Wardrobes</strong>
+                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Assembly of wardrobes and storage systems (including PAX).</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-bolt"></i>
+                    <div>
+                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Electronics</strong>
+                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Built-in lighting and electric mechanisms connection.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience-en">
+            <h2>Experience & Reputation</h2>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">1. Askona Flagship (Aviapark Mall, 2022)</h3>
+                <p>Assembled the entire furniture stock for the flagship store. Delivered on time with perfect quality.</p>
+            </div>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">2. Large Projects (Shchelkovsky Mall)</h3>
+                <p>Comprehensive equipment for exhibition halls of leading furniture brands:</p>
+                <ul style="color:var(--dim); padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><b>2022:</b> Two-story <b>Askona</b> showroom.</li>
+                    <li><b>2021:</b> <b>Ormatek</b> showroom.</li>
+                </ul>
+            </div>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">3. VIP Clients</h3>
+                <p>Experience in the premium segment. Clients include: <span class="accent" style="font-weight:bold">Philipp Kirkorov</span> and <span class="accent" style="font-weight:bold">Evelina Bledans</span>.</p>
+            </div>
+            <div class="card-exp">
+                <h3 style="color:var(--yellow); margin-top:0;">4. Leading Brands</h3>
+                <p>Expert knowledge of <b>Askona, Ormatek, Raiton, and IKEA</b> technical maps. 5+ years of stable experience.</p>
+            </div>
+        </section>
+
+        <section id="portfolio-en">
+            <h2>Portfolio</h2>
+            <h3>Askona Showroom (Aviapark)</h3>
+            <div class="photo-gallery">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (1).jpg" alt="Assembly at Aviapark 1/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (2).jpg" alt="Assembly at Aviapark 2/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (3).jpg" alt="Assembly at Aviapark 3/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (4).jpg" alt="Assembly at Aviapark 4/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (5).jpg" alt="Assembly at Aviapark 5/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (6).jpg" alt="Assembly at Aviapark 6/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (7).jpg" alt="Assembly at Aviapark 7/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/Авиапарк (8).jpg" alt="Assembly at Aviapark 8/8 shopping center">
+                <img src="imgaes for site/Аскона 2022/2022-08-17 20-38-30.jpg" alt="Assembly of a complete set of Space Solutions in Aviapark shopping center">
+            </div>
+            <h3>Showrooms in Shchelkovsky Mall</h3>
+            <div class="photo-gallery">
+                 <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (1).jpg" alt="Assembling a cabinet made of solid wood 1/2">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (2).jpg" alt="Assembling a bed from a metal frame">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (3).jpg" alt="Assembling a double-leaf cabinet">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (4).jpg" alt="Assembling a cabinet made of solid wood 2/2">
+            </div>
+            <h3>Other Works</h3>
+            <div class="photo-gallery">
+                <img src="imgaes for site/Space_Solutions.jpg" alt="Assembling a folding bed Space Solutions 1/3">
+                <img src="imgaes for site/Space_Solutions2.jpg" alt="Assembling a folding bed Space Solutions 2/3">
+                <img src="imgaes for site/Space_Solutions_Rumer.jpg" alt="Assembling a folding bed Space Solutions 3/3">
+                <img src="imgaes for site/Дыван.jpg" alt="Assembling a sofa with an ataman">
+                <img src="imgaes for site/Угловой.jpg" alt="Assembling the Space Solutions 1/2 corner cabinet">
+                <img src="imgaes for site/Угловой (2).jpg" alt="Assembling the Space Solutions 2/2 corner cabinet">
+            </div>
+        </section>
+
+        <section id="guarantee-en">
+            <h2>Warranty Obligations</h2>
+            <div class="card-exp">
+                <p>I am confident in the quality of my work and provide a <b>12-month</b> warranty.</p>
+                <div class="guarantee-box">
+                    <ul class="guarantee-list">
+                        <li>Geometry issues due to incorrect tightening of fasteners.</li>
+                        <li>Incorrect hardware operation (hinges, closers) under normal load.</li>
+                        <li>Squeaks related to installation errors.</li>
+                        <li>Proper functioning of all lifting mechanisms and electronics.</li>
+                    </ul>
+                </div>
+                <p style="margin-top:20px; font-size:0.85rem; color:var(--dim);">
+                    * The warranty does not cover natural wear, manufacturer's material defects, or damage due to overload or relocation of furniture by the client after assembly.
+                </p>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Order Now</h2>
+            <p>Moscow and Moscow Region. Available 12:00 - 23:00</p>
+            <a href="tel:+79017803794" class="cta-btn">Call Vladislav</a>
+        </div>
+    </div>
+</div>
+
+<footer style="text-align:center; padding: 50px; color:var(--dim); border-top:1px solid var(--border);">
+    © 2026 Владислав. Сборка корпусной мебели. Более 1000 довольных клиентов.
+</footer>
+
+<script>
+    function toggleTheme() {
+        const b = document.body;
+        const i = document.getElementById('tIcon');
+        const isD = b.getAttribute('data-theme') === 'dark';
+        b.setAttribute('data-theme', isD ? 'light' : 'dark');
+        i.className = isD ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    function toggleLang() {
+        const r = document.getElementById('ru'); 
+        const e = document.getElementById('en');
+        const b = document.getElementById('lBtn');
+        const isR = e.classList.contains('hidden');
+        r.classList.toggle('hidden'); 
+        e.classList.toggle('hidden');
+        b.innerText = isR ? 'RU' : 'EN';
+    }
+</script>
+</body>
+</html>
