@@ -420,6 +420,27 @@
         e.classList.toggle('hidden');
         b.innerText = isR ? 'RU' : 'EN';
     }
+
+    // Находим элементы
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-img');
+
+document.querySelectorAll('.photo-gallery img').forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.onclick = function() {
+        // 1. Сначала вставляем путь к картинке
+        modalImg.src = this.src;
+        // 2. Затем показываем окно (используем flex для центровки)
+        modal.style.display = 'flex';
+        // 3. Блокируем прокрутку
+        document.body.style.overflow = 'hidden';
+    }
+});
+
+function closeModal() {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
     // СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ ФОТО
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
