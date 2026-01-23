@@ -399,6 +399,10 @@
     © 2026 Владислав. Сборка премиальной корпусной мебели. Более 1000 довольных клиентов.
 </footer>
 
+<div id="modal" onclick="closeModal()">
+    <img id="modal-img" src="" alt="Full size">
+</div>
+
 <script>
     function toggleTheme() {
         const b = document.body;
@@ -415,6 +419,23 @@
         r.classList.toggle('hidden'); 
         e.classList.toggle('hidden');
         b.innerText = isR ? 'RU' : 'EN';
+    }
+    // СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ ФОТО
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    // Находим все картинки в галереях
+    document.querySelectorAll('.photo-gallery img').forEach(img => {
+        img.onclick = function() {
+            modal.classList.add('active');
+            modalImg.src = this.src; // Берем путь из нажатой картинки
+            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку сайта
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto'; // Возвращаем прокрутку
     }
 </script>
 </body>
