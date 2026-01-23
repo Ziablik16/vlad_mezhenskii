@@ -105,12 +105,18 @@
         .photo-gallery img {
             width: 100%; height: 150px; object-fit: cover; border-radius: 12px;
             border: 1px solid var(--border); transition: transform 0.2s ease;
+            cursor: zoom-in;
         }
         .photo-gallery img:hover { transform: scale(1.03); border-color: var(--accent); }
-        .photo-placeholder {
-            width: 100%; height: 150px; background-color: var(--photo-bg);
-            border-radius: 12px; display: flex; align-items: center; justify-content: center;
-            color: var(--dim); font-size: 0.9rem; border: 1px solid var(--border);
+
+        #modal {
+            display: none; position: fixed; z-index: 9999; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+            justify-content: center; align-items: center; cursor: zoom-out;
+        }
+        #modal img {
+            max-width: 90%; max-height: 90%; border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
         .hidden { display: none; }
@@ -150,7 +156,7 @@
                 </div>
             </div>
             <div class="btn-group">
-                <a href="tel:+79017803794" class="cta-btn" style="background:var(--grad); color:white; font-size:1.1rem; padding:15px 30px; border-radius:12px;">Позвонить Владиславу</a>
+                <a href="tel:+79779205282" class="cta-btn" style="background:var(--grad); color:white; font-size:1.1rem; padding:15px 30px; border-radius:12px;">Позвонить Владиславу</a>
             </div>
         </section>
 
@@ -214,7 +220,7 @@
             </div>
             <div class="card-exp">
                 <h3 style="color:var(--yellow); margin-top:0;">3. Работа с VIP-клиентами</h3>
-                <p>Многолетний опыт работы в премиум-сегменте. Среди клиентов, доверивших мне сборку своего интерьера: <span class="accent" style="font-weight:bold">Филипп Киркоров</span> и <span class="accent" style="font-weight:bold">Эвелина Блёданс</span>.</p>
+                <p>Многолетний опыт работы в премиум-сегменте. Среди клиентов: <span class="accent" style="font-weight:bold">Филипп Киркоров</span> и <span class="accent" style="font-weight:bold">Эвелина Блёданс</span>.</p>
             </div>
             <div class="card-exp">
                 <h3 style="color:var(--yellow); margin-top:0;">4. Экспертное знание рынка</h3>
@@ -244,10 +250,10 @@
             </div>
             <h3>Салоны в ТЦ «Щелковский»</h3>
             <div class="photo-gallery">
-                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (1).jpg" alt="Сборка шкафа из массива">
-                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (2).jpg" alt="Сборка кровати из металлического каркаса">
-                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (3).jpg" alt="Сборка двухстворчатого шкафа">
-                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (4).jpg" alt="Сборка шкафа из массива 2">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (1).jpg" alt="Сборка шкафа">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (2).jpg" alt="Сборка кровати">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (3).jpg" alt="Сборка шкафа">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (4).jpg" alt="Сборка мебели">
             </div>
         </section>
 
@@ -259,7 +265,7 @@
                     <ul class="guarantee-list">
                         <li>Правильная геометрия и работа фурнитуры при соблюдении норм.</li>
                         <li>Надежность подключения встроенной техники.</li>
-                        <li>Исправность подъемных механизмов и электроники.</li>
+                        <li>Исправность всех подъемных механизмов и электроники.</li>
                         <li>Отсутствие скрипов и люфтов после монтажа.</li>
                     </ul>
                 </div>
@@ -269,7 +275,7 @@
         <div class="cta-section">
             <h2>Сделать заказ</h2>
             <p>Работаю по Москве и МО. Связь с 12:00 до 23:00</p>
-            <a href="tel:+79017803794" class="cta-btn">Позвонить мастеру</a>
+            <a href="tel:+79779205282" class="cta-btn">Позвонить мастеру</a>
         </div>
     </div>
 
@@ -278,65 +284,29 @@
             <h2>About the Master</h2>
             <div class="card-exp" style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center;">
                 <div style="flex: 0 0 200px; margin: 0 auto;">
-                    <img src="imges for site/photo_2026-01-21_15-04-57.jpg" alt="Vladislav" style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; box-shadow: 0 0 20px rgba(109, 40, 217, 0.3);">
+                    <img src="imges for site/photo_2026-01-21_15-04-57.jpg" alt="Vladislav" style="width: 200px; height: 200px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover;">
                 </div>
                 <div style="flex: 1; min-width: 300px;">
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 0;">
-                        Professional assembly expert for <b>premium furniture</b> with <b>over 8 years</b> of experience. I specialize in complex custom projects from top domestic manufacturers. My approach combines engineering precision with attention to detail.
+                        Professional assembly expert for <b>premium furniture</b> with <b>over 8 years</b> of experience. Specializing in bespoke designs from leading manufacturers. My approach combines engineering precision with professional tools.
                     </p>
-                    <p style="font-size: 1.1rem;">Full-cycle service: from unboxing to "turnkey" installation including built-in appliances and electronics connection.</p>
+                    <p style="font-size: 1.1rem;">Full-cycle service: from unboxing to "turnkey" installation with appliance and electronics connection.</p>
                 </div>
             </div>
             <div class="btn-group">
-                <a href="tel:+79017803794" class="cta-btn" style="background:var(--grad); color:white; font-size:1.1rem; padding:15px 30px; border-radius:12px;">Call Vladislav</a>
+                <a href="tel:+79779205282" class="cta-btn" style="background:var(--grad); color:white; font-size:1.1rem; padding:15px 30px; border-radius:12px;">Call Vladislav</a>
             </div>
         </section>
 
         <section id="services-en">
             <h2>Services</h2>
             <div class="grid">
-                <div class="service-card">
-                    <i class="fas fa-utensils"></i>
-                    <div>
-                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Premium Kitchens</strong>
-                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Assembly of any complexity, perfect module alignment, and custom element installation.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tools"></i>
-                    <div>
-                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Appliances Integration</strong>
-                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Hobs, hoods, ovens, and dishwashers setup according to technical standards.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-couch"></i>
-                    <div>
-                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Custom Furniture</strong>
-                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Bespoke wardrobes, home libraries, and individual cabinetry assembly.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-door-open"></i>
-                    <div>
-                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Wardrobes & PAX</strong>
-                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Installation of sliding wardrobes and hidden storage systems.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-bed"></i>
-                    <div>
-                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Beds & Bedrooms</strong>
-                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Beds with any mechanisms (lifting, orthopedic) and related bedroom sets.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-bolt"></i>
-                    <div>
-                        <strong style="font-size:1.2rem; display:block; margin-bottom:10px;">Electrical Setup</strong>
-                        <p style="color:var(--dim); font-size:0.9rem; margin:0;">Integrated furniture lighting, sockets, and switches mounting.</p>
-                    </div>
-                </div>
+                <div class="service-card"><i class="fas fa-utensils"></i><div><strong>Premium Kitchens</strong><p>Complex assembly, module fitting, and appliance integration.</p></div></div>
+                <div class="service-card"><i class="fas fa-tools"></i><div><strong>Appliance Setup</strong><p>Integration of hobs, hoods, and ovens following technical standards.</p></div></div>
+                <div class="service-card"><i class="fas fa-couch"></i><div><strong>Custom Furniture</strong><p>Assembly of bespoke wardrobes, libraries, and home offices.</p></div></div>
+                <div class="service-card"><i class="fas fa-door-open"></i><div><strong>Wardrobes & PAX</strong><p>Installation of sliding wardrobes and hidden storage systems.</p></div></div>
+                <div class="service-card"><i class="fas fa-bed"></i><div><strong>Beds & Bedrooms</strong><p>Beds with lifting mechanisms and related bedroom sets.</p></div></div>
+                <div class="service-card"><i class="fas fa-bolt"></i><div><strong>Electrical Setup</strong><p>Integrated furniture lighting and sockets mounting.</p></div></div>
             </div>
         </section>
 
@@ -344,15 +314,15 @@
             <h2>Experience</h2>
             <div class="card-exp">
                 <h3 style="color:var(--yellow); margin-top:0;">1. Complex Kitchen Projects (2022–2026)</h3>
-                <p>Completed over 100 premium turnkey kitchens with full appliance integration and hidden storage systems.</p>
+                <p>Over 100 premium turnkey kitchens with full appliance integration.</p>
             </div>
             <div class="card-exp">
-                <h3 style="color:var(--yellow); margin-top:0;">2. Large-scale Retail Projects</h3>
-                <p>Full equipment of showrooms for leading brands (Askona, Ormatek) at Shchelkovsky Mall.</p>
+                <h3 style="color:var(--yellow); margin-top:0;">2. Shchelkovsky Mall Projects</h3>
+                <p>Full equipment of flagship showrooms for major brands (Askona, Ormatek).</p>
             </div>
             <div class="card-exp">
                 <h3 style="color:var(--yellow); margin-top:0;">3. VIP Clients</h3>
-                <p>Long-term experience in the premium segment. Notable clients include high-profile individuals and celebrities.</p>
+                <p>Long-term experience in the premium segment. Notable clients include celebrities.</p>
             </div>
             <div class="card-exp">
                 <h3 style="color:var(--yellow); margin-top:0;">4. Market Expertise</h3>
@@ -364,33 +334,50 @@
             <h2>Portfolio</h2>
             <h3>Kitchens</h3>
             <div class="photo-gallery">
-               <img src="imges for site/Кухни/photo_2026-01-21_14-47-15 (2).jpg" alt="Фото кухни 1">
-                <img src="imges for site/Кухни/photo_2026-01-21_14-47-15 (3).jpg" alt="Фото кухни 2">
-                <img src="imges for site/Кухни/photo_2026-01-21_14-47-16 (2).jpg" alt="Фото кухни 3">
-                <img src="imges for site/Кухни/photo_2026-01-21_14-47-16.jpg" alt="Фото кухни 4">
+                <img src="imges for site/Кухни/photo_2026-01-21_14-47-15 (2).jpg" alt="Kitchen 1">
+                <img src="imges for site/Кухни/photo_2026-01-21_14-47-15 (3).jpg" alt="Kitchen 2">
+                <img src="imges for site/Кухни/photo_2026-01-21_14-47-16 (2).jpg" alt="Kitchen 3">
+                <img src="imges for site/Кухни/photo_2026-01-21_14-47-16.jpg" alt="Kitchen 4">
             </div>
             <h3>Wardrobes</h3>
             <div class="photo-gallery">
-               <img src="imges for site/Шкафы и стенки/2025-02-08 20.47.31.jpg" alt="Фото шкафа 1">
-                <img src="imges for site/Шкафы и стенки/2025-02-18 17.31.28.jpg" alt="Фото шкафа 2">
-                <img src="imges for site/Шкафы и стенки/2025-02-03 16.45.42.jpg" alt="Фото шкафа 3">
-                <img src="imges for site/Шкафы и стенки/2024-12-30 18.13.19.jpg" alt="Фото шкафа 4">
-                <img src="imges for site/Шкафы и стенки/2024-11-08 16.15.03.jpg" alt="Фото шкафа 5">
-                <img src="imges for site/Шкафы и стенки/2024-11-08 16.15.16.jpg" alt="Фото шкафа 6">
-                <img src="imges for site/Шкафы и стенки/2024-11-08 16.15.36.jpg" alt="Фото шкафа 7">
-                <img src="imges for site/Шкафы и стенки/2024-10-27 15.43.03.jpg" alt="Фото шкафа 8">
+                <img src="imges for site/Шкафы и стенки/2025-02-08 20.47.31.jpg" alt="Wardrobe 1">
+                <img src="imges for site/Шкафы и стенки/2025-02-18 17.31.28.jpg" alt="Wardrobe 2">
+                <img src="imges for site/Шкафы и стенки/2025-02-03 16.45.42.jpg" alt="Wardrobe 3">
+                <img src="imges for site/Шкафы и стенки/2024-12-30 18.13.19.jpg" alt="Wardrobe 4">
+                <img src="imges for site/Шкафы и стенки/2024-11-08 16.15.03.jpg" alt="Wardrobe 5">
+                <img src="imges for site/Шкафы и стенки/2024-11-08 16.15.16.jpg" alt="Wardrobe 6">
+                <img src="imges for site/Шкафы и стенки/2024-11-08 16.15.36.jpg" alt="Wardrobe 7">
+                <img src="imges for site/Шкафы и стенки/2024-10-27 15.43.03.jpg" alt="Wardrobe 8">
             </div>
-            <h3>Showrooms in Shchelkovsky Mall</h3>
+            <h3>Shchelkovsky Mall</h3>
             <div class="photo-gallery">
-                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (1).jpg" alt="Cabinet assembly">
-                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (2).jpg" alt="Bed assembly">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (1).jpg" alt="Showroom 1">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (2).jpg" alt="Showroom 2">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (3).jpg" alt="Showroom 3">
+                <img src="imgaes for site/Аскона 2022/щелчок/Щелчок (4).jpg" alt="Showroom 4">
+            </div>
+        </section>
+
+        <section id="guarantee-en">
+            <h2>Warranty Obligations</h2>
+            <div class="card-exp">
+                <p>I am confident in the quality of my work and provide a <b>12-month</b> warranty.</p>
+                <div class="guarantee-box">
+                    <ul class="guarantee-list">
+                        <li>Correct geometry and functioning of fittings.</li>
+                        <li>Reliability of built-in appliances connection.</li>
+                        <li>Proper operation of all lifting mechanisms and electronics.</li>
+                        <li>No squeaks or gaps after installation.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <div class="cta-section">
             <h2>Make an Order</h2>
             <p>Serving Moscow & Region. Available 12:00 - 23:00</p>
-            <a href="tel:+79017803794" class="cta-btn">Call Master</a>
+            <a href="tel:+79779205282" class="cta-btn">Call Master</a>
         </div>
     </div>
 </div>
@@ -421,42 +408,20 @@
         b.innerText = isR ? 'RU' : 'EN';
     }
 
-    // Находим элементы
-const modal = document.getElementById('modal');
-const modalImg = document.getElementById('modal-img');
-
-document.querySelectorAll('.photo-gallery img').forEach(img => {
-    img.style.cursor = 'zoom-in';
-    img.onclick = function() {
-        // 1. Сначала вставляем путь к картинке
-        modalImg.src = this.src;
-        // 2. Затем показываем окно (используем flex для центровки)
-        modal.style.display = 'flex';
-        // 3. Блокируем прокрутку
-        document.body.style.overflow = 'hidden';
-    }
-});
-
-function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-    // СКРИПТ ДЛЯ УВЕЛИЧЕНИЯ ФОТО
     const modal = document.getElementById('modal');
     const modalImg = document.getElementById('modal-img');
 
-    // Находим все картинки в галереях
     document.querySelectorAll('.photo-gallery img').forEach(img => {
         img.onclick = function() {
-            modal.classList.add('active');
-            modalImg.src = this.src; // Берем путь из нажатой картинки
-            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку сайта
+            modalImg.src = this.src;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
     });
 
     function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Возвращаем прокрутку
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
     }
 </script>
 </body>
